@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Soccer Sim</string>
+    <string name="welcome_message">Welcome to Soccer Simulator! Tap the button to start a new Group Stage simulation. Every tap will start a new simulation</string>
+    <string name="start_button_text">Start simulation</string>
+    <string name="group_standings_title">Group standings</string>
+    <string name="matches_results_title">Matches Results</string>
+</resources>
