@@ -19,6 +19,9 @@ class MainActivity : BaseActivity<MainViewModel>() {
     }
 
     override fun provideViewModel(): MainViewModel {
-        return ViewModelProvider(this, MainViewModelFactory(this))[MainViewModel::class.java]
+        return ViewModelProvider(
+            this,
+            MainViewModelFactory(this)
+        )[MainViewModel::class.java]
     }
 }

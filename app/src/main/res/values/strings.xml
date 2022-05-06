@@ -4,4 +4,12 @@
     <string name="start_button_text">Start simulation</string>
     <string name="group_standings_title">Group standings</string>
     <string name="matches_results_title">Matches Results</string>
+    <string name="group_standings_header_team">Team</string>
+    <string name="group_standings_header_won">W</string>
+    <string name="group_standings_header_draw">D</string>
+    <string name="group_standings_header_lost">L</string>
+    <string name="group_standings_header_scored">GS</string>
+    <string name="group_standings_header_conceded">GC</string>
+    <string name="group_standings_header_diff">GD</string>
+    <string name="group_standings_header_points">P</string>
 </resources>

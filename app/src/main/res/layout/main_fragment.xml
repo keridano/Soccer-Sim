@@ -44,14 +44,24 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/start_button" />
 
-        <androidx.recyclerview.widget.RecyclerView
+        <TableLayout
             android:id="@+id/group_standings_grid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/group_standings_title" />
+            app:layout_constraintTop_toBottomOf="@id/group_standings_title">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/group_standings_rw"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:itemCount="4"
+                tools:listitem="@layout/group_standings_item" />
+
+        </TableLayout>
 
         <TextView
             android:id="@+id/group_results_title"
