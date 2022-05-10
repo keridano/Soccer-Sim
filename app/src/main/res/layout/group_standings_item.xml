@@ -13,18 +13,18 @@
         android:textAppearance="?attr/textAppearanceBody2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/logo_iw"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="1" />
 
     <ImageView
         android:id="@+id/logo_iw"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/name_tw"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toEndOf="@+id/position_tw"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="ContentDescription"
@@ -32,13 +32,13 @@
 
     <TextView
         android:id="@+id/name_tw"
-        android:layout_width="wrap_content"
+        android:layout_width="55dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:textAppearance="?attr/textAppearanceBody2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/won_matches_tw"
-        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintHorizontal_weight="2"
         app:layout_constraintStart_toEndOf="@+id/logo_iw"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="France" />
@@ -47,11 +47,11 @@
         android:id="@+id/won_matches_tw"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
+        android:layout_marginStart="20dp"
         android:textAppearance="?attr/textAppearanceBody2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/draw_matches_tw"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toEndOf="@+id/name_tw"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="3" />
@@ -64,7 +64,7 @@
         android:textAppearance="?attr/textAppearanceBody2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/lost_matches_tw"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toEndOf="@+id/won_matches_tw"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="1" />
@@ -77,7 +77,7 @@
         android:textAppearance="?attr/textAppearanceBody2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/scored_goals_tw"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toEndOf="@+id/draw_matches_tw"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="0" />
@@ -90,7 +90,7 @@
         android:textAppearance="?attr/textAppearanceBody2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/conceded_goals_tw"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toEndOf="@+id/lost_matches_tw"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="8" />
@@ -103,7 +103,7 @@
         android:textAppearance="?attr/textAppearanceBody2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/goal_difference_tw"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toEndOf="@+id/scored_goals_tw"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="3" />
@@ -116,7 +116,7 @@
         android:textAppearance="?attr/textAppearanceBody2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/points_tw"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toEndOf="@+id/conceded_goals_tw"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="5" />
@@ -129,7 +129,7 @@
         android:textAppearance="?attr/textAppearanceBody2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toEndOf="@+id/goal_difference_tw"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="10" />

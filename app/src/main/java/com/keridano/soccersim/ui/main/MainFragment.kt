@@ -4,12 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ConcatAdapter
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.keridano.soccersim.R
 import com.keridano.soccersim.databinding.MainFragmentBinding
 import com.keridano.soccersim.model.Team
+
 
 class MainFragment : Fragment() {
 
@@ -48,6 +51,11 @@ class MainFragment : Fragment() {
         groupStandingsAdapter.setItems(createTeams())
         groupStandingsConcatAdapter = ConcatAdapter(groupStandingsHeaderAdapter, groupStandingsAdapter)
         binding.groupStandingsRw.adapter = groupStandingsConcatAdapter
+        val dividerItemDecoration = DividerItemDecoration(
+            requireContext(),
+            LinearLayout.VERTICAL
+        )
+        binding.groupStandingsRw.addItemDecoration(dividerItemDecoration)
     }
 
     override fun onDestroyView() {

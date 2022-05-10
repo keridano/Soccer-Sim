@@ -13,7 +13,7 @@
         android:textAppearance="?attr/textAppearanceSubtitle1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/won_matches_header_tw"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_weight="4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Team" />
@@ -27,7 +27,7 @@
         android:textAppearance="?attr/textAppearanceSubtitle1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/draw_matches_header_tw"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toEndOf="@+id/team_header_tw"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="W" />
@@ -40,7 +40,7 @@
         android:textAppearance="?attr/textAppearanceSubtitle1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/lost_matches_header_tw"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toEndOf="@+id/won_matches_header_tw"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="D" />
@@ -53,7 +53,7 @@
         android:textAppearance="?attr/textAppearanceSubtitle1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/scored_goals_header_tw"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toEndOf="@+id/draw_matches_header_tw"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="L" />
@@ -66,7 +66,7 @@
         android:textAppearance="?attr/textAppearanceSubtitle1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/conceded_goals_header_tw"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toEndOf="@+id/lost_matches_header_tw"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="SG" />
@@ -79,7 +79,7 @@
         android:textAppearance="?attr/textAppearanceSubtitle1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/goal_difference_header_tw"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toEndOf="@+id/scored_goals_header_tw"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="CG" />
@@ -92,7 +92,7 @@
         android:textAppearance="?attr/textAppearanceSubtitle1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/points_header_tw"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toEndOf="@+id/conceded_goals_header_tw"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="GD" />
@@ -105,7 +105,7 @@
         android:textAppearance="?attr/textAppearanceSubtitle1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toEndOf="@+id/goal_difference_header_tw"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="P" />
