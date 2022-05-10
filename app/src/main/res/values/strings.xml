@@ -12,4 +12,7 @@
     <string name="group_standings_header_conceded">GC</string>
     <string name="group_standings_header_diff">GD</string>
     <string name="group_standings_header_points">P</string>
+    <string name="match_result_dash" translatable="false">-</string>
+    <string name="match_day">Matchday %1$d</string>
+    <string name="empty_results">There are no data! Tap the button above to start the simulation</string>
 </resources>

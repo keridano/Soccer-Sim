@@ -11,6 +11,7 @@ package com.keridano.soccersim.model
 data class Match(
     val homeTeam: Team,
     val awayTeam: Team,
+    val matchDay: Int,
     var homeTeamGoals: Int,
     var awayTeamGoals: Int
 )

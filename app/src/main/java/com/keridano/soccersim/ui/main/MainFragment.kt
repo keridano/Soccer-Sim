@@ -11,7 +11,12 @@ import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.keridano.soccersim.R
 import com.keridano.soccersim.databinding.MainFragmentBinding
+import com.keridano.soccersim.model.Match
 import com.keridano.soccersim.model.Team
+import com.keridano.soccersim.model.enum.Bonus
+import com.keridano.soccersim.ui.main.adapter.GroupStandingsAdapter
+import com.keridano.soccersim.ui.main.adapter.GroupStandingsHeaderAdapter
+import com.keridano.soccersim.ui.main.adapter.ResultsAdapter
 
 
 class MainFragment : Fragment() {
@@ -24,6 +29,7 @@ class MainFragment : Fragment() {
     private lateinit var groupStandingsAdapter: GroupStandingsAdapter
     private lateinit var groupStandingsHeaderAdapter: GroupStandingsHeaderAdapter
     private lateinit var groupStandingsConcatAdapter: ConcatAdapter
+    private lateinit var resultsAdapter: ResultsAdapter
 
     private var _binding: MainFragmentBinding? = null
     private val binding get() = _binding!!
@@ -46,16 +52,65 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        groupStandingsHeaderAdapter = GroupStandingsHeaderAdapter()
-        groupStandingsAdapter = GroupStandingsAdapter()
-        groupStandingsAdapter.setItems(createTeams())
-        groupStandingsConcatAdapter = ConcatAdapter(groupStandingsHeaderAdapter, groupStandingsAdapter)
-        binding.groupStandingsRw.adapter = groupStandingsConcatAdapter
+
         val dividerItemDecoration = DividerItemDecoration(
             requireContext(),
             LinearLayout.VERTICAL
         )
+
+        groupStandingsHeaderAdapter = GroupStandingsHeaderAdapter()
+        groupStandingsAdapter = GroupStandingsAdapter()
+        groupStandingsAdapter.setItems(createTeams())
+        groupStandingsConcatAdapter =
+            ConcatAdapter(groupStandingsHeaderAdapter, groupStandingsAdapter)
+        binding.groupStandingsRw.adapter = groupStandingsConcatAdapter
         binding.groupStandingsRw.addItemDecoration(dividerItemDecoration)
+
+        resultsAdapter = ResultsAdapter()
+        binding.groupResultsRw.apply {
+            emptyStateView = binding.emptyView
+            loadingStateView = binding.loadingView
+            adapter = resultsAdapter
+            addItemDecoration(dividerItemDecoration)
+        }
+
+        binding.startButton.setOnClickListener {
+            // FIXME for test only
+            resultsAdapter.setItems(
+                listOf(
+                    Match(
+                        homeTeam = Team(
+                            name = "France",
+                            logo = R.drawable.ic_france_logo,
+                            bonuses = listOf(Bonus.BEST_PLAYERS)
+                        ),
+                        homeTeamGoals = 3,
+                        awayTeam = Team(
+                            name = "Spain",
+                            logo = R.drawable.ic_spain_logo,
+                            bonuses = listOf(Bonus.BEST_COACH)
+                        ),
+                        awayTeamGoals = 2,
+                        matchDay = 1
+                    ),
+                    Match(
+                        homeTeam = Team(
+                            name = "Belgium",
+                            logo = R.drawable.ic_belgium_logo,
+                            bonuses = listOf(Bonus.BEST_DEFENSE)
+                        ),
+                        homeTeamGoals = 1,
+                        awayTeam = Team(
+                            name = "Finland",
+                            logo = R.drawable.ic_finland_logo,
+                            bonuses = listOf(Bonus.LUCKY_TEAM)
+                        ),
+                        awayTeamGoals = 1,
+                        matchDay = 2
+                    )
+                )
+            )
+        }
     }
 
     override fun onDestroyView() {
@@ -65,10 +120,26 @@ class MainFragment : Fragment() {
 
     private fun createTeams(): List<Team> {
         return listOf(
-            Team(name = "France", logo = R.drawable.ic_france_logo, strength = 60),
-            Team(name = "Spain", logo = R.drawable.ic_spain_logo, strength = 55),
-            Team(name = "Belgium", logo = R.drawable.ic_belgium_logo, strength = 50),
-            Team(name = "Finland", logo = R.drawable.ic_finland_logo, strength = 45),
+            Team(
+                name = "France",
+                logo = R.drawable.ic_france_logo,
+                bonuses = listOf(Bonus.BEST_PLAYERS)
+            ),
+            Team(
+                name = "Spain",
+                logo = R.drawable.ic_spain_logo,
+                bonuses = listOf(Bonus.BEST_COACH)
+            ),
+            Team(
+                name = "Belgium",
+                logo = R.drawable.ic_belgium_logo,
+                bonuses = listOf(Bonus.BEST_DEFENSE)
+            ),
+            Team(
+                name = "Finland",
+                logo = R.drawable.ic_finland_logo,
+                bonuses = listOf(Bonus.LUCKY_TEAM)
+            ),
         )
     }
 }

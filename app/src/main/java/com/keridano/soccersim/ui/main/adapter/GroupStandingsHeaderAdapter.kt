@@ -1,4 +1,4 @@
-package com.keridano.soccersim.ui.main
+package com.keridano.soccersim.ui.main.adapter
 
 import android.content.Context
 import android.view.LayoutInflater

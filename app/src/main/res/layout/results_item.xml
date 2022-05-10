@@ -53,13 +53,13 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:text="@string/match_result_dash"
         android:textAppearance="?attr/textAppearanceHeadline4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/away_score_tw"
         app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toEndOf="@+id/home_score_tw"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="-" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/away_score_tw"
@@ -102,5 +102,16 @@
             tools:text="Spain" />
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/match_day_tw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center|bottom"
+        android:text="@string/match_day"
+        android:textAppearance="?attr/textAppearanceCaption"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
