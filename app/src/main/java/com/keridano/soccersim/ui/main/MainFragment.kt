@@ -11,12 +11,12 @@ import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.keridano.soccersim.R
 import com.keridano.soccersim.databinding.MainFragmentBinding
-import com.keridano.soccersim.model.Match
 import com.keridano.soccersim.model.Team
 import com.keridano.soccersim.model.enum.Bonus
 import com.keridano.soccersim.ui.main.adapter.GroupStandingsAdapter
 import com.keridano.soccersim.ui.main.adapter.GroupStandingsHeaderAdapter
 import com.keridano.soccersim.ui.main.adapter.ResultsAdapter
+import com.keridano.soccersim.util.RecyclerViewUiState
 
 
 class MainFragment : Fragment() {
@@ -39,6 +39,10 @@ class MainFragment : Fragment() {
         // We don't need a factory here! this will return the same view model
         // already created for MainActivity
         viewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
+
+        viewModel.uiState.observe(this) {
+            onUiState(it)
+        }
     }
 
     override fun onCreateView(
@@ -75,47 +79,59 @@ class MainFragment : Fragment() {
         }
 
         binding.startButton.setOnClickListener {
-            // FIXME for test only
-            resultsAdapter.setItems(
-                listOf(
-                    Match(
-                        homeTeam = Team(
-                            name = "France",
-                            logo = R.drawable.ic_france_logo,
-                            bonuses = listOf(Bonus.BEST_PLAYERS)
-                        ),
-                        homeTeamGoals = 3,
-                        awayTeam = Team(
-                            name = "Spain",
-                            logo = R.drawable.ic_spain_logo,
-                            bonuses = listOf(Bonus.BEST_COACH)
-                        ),
-                        awayTeamGoals = 2,
-                        matchDay = 1
-                    ),
-                    Match(
-                        homeTeam = Team(
-                            name = "Belgium",
-                            logo = R.drawable.ic_belgium_logo,
-                            bonuses = listOf(Bonus.BEST_DEFENSE)
-                        ),
-                        homeTeamGoals = 1,
-                        awayTeam = Team(
-                            name = "Finland",
-                            logo = R.drawable.ic_finland_logo,
-                            bonuses = listOf(Bonus.LUCKY_TEAM)
-                        ),
-                        awayTeamGoals = 1,
-                        matchDay = 2
-                    )
-                )
-            )
+            viewModel.startSimulation()
+//            // for test only
+//            resultsAdapter.setItems(
+//                listOf(
+//                    Match(
+//                        homeTeam = Team(
+//                            name = "France",
+//                            logo = R.drawable.ic_france_logo,
+//                            bonuses = listOf(Bonus.BEST_PLAYERS)
+//                        ),
+//                        homeTeamGoals = 3,
+//                        awayTeam = Team(
+//                            name = "Spain",
+//                            logo = R.drawable.ic_spain_logo,
+//                            bonuses = listOf(Bonus.BEST_COACH)
+//                        ),
+//                        awayTeamGoals = 2,
+//                        matchDay = 1
+//                    ),
+//                    Match(
+//                        homeTeam = Team(
+//                            name = "Belgium",
+//                            logo = R.drawable.ic_belgium_logo,
+//                            bonuses = listOf(Bonus.BEST_DEFENSE)
+//                        ),
+//                        homeTeamGoals = 1,
+//                        awayTeam = Team(
+//                            name = "Finland",
+//                            logo = R.drawable.ic_finland_logo,
+//                            bonuses = listOf(Bonus.LUCKY_TEAM)
+//                        ),
+//                        awayTeamGoals = 1,
+//                        matchDay = 2
+//                    )
+//                )
+//            )
         }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
+        binding.startButton.setOnClickListener(null)
         _binding = null
+    }
+
+    private fun onUiState(it: MainViewUiState) {
+        binding.groupResultsRw.stateView = when {
+            it.isSpinnerBlockingUi -> RecyclerViewUiState.LOADING
+            resultsAdapter.itemCount > 0 -> RecyclerViewUiState.NORMAL
+            else -> RecyclerViewUiState.EMPTY
+        }
+
+        binding.startButton.isEnabled = it.isStartSimulationButtonActive
     }
 
     private fun createTeams(): List<Team> {
