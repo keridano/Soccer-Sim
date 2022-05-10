@@ -79,9 +79,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/group_results_title" />
+            app:layout_constraintTop_toBottomOf="@id/group_results_title"
+            tools:itemCount="6"
+            tools:listitem="@layout/results_item" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
