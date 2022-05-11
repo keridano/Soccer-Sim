@@ -18,7 +18,7 @@ import com.keridano.soccersim.model.enum.Bonus
 data class Team(
     val name: String,
     val logo: Int,
-    val strength: Int = 50,
+    var strength: Int = 50,
     val bonuses: List<Bonus>,
     var wonMatches: Int = 0,
     var lostMatches: Int = 0,

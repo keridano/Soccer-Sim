@@ -43,6 +43,7 @@ class MainViewModel(
                 Team(
                     name = "Finland",
                     logo = R.drawable.ic_finland_logo,
+                    strength = 40,
                     bonuses = listOf(Bonus.LUCKY_TEAM)
                 )
             ),

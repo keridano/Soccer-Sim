@@ -5,6 +5,7 @@ import android.util.AttributeSet
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.AdapterDataObserver
+import com.keridano.soccersim.extension.visible
 
 /**
  * This class extends [RecyclerView] in order to add empty and loading views feature
@@ -55,38 +56,38 @@ class RecyclerViewEmptyLoadingSupport : RecyclerView {
 
     fun onChangeState() {
         if (adapter?.itemCount == 0) {
-            emptyStateView?.visibility = View.VISIBLE
-            loadingStateView?.visibility = View.GONE
-            visibility = View.GONE
+            emptyStateView?.visible(true)
+            loadingStateView?.visible(false)
+            this.visible(false)
         } else {
-            emptyStateView?.visibility = View.GONE
-            loadingStateView?.visibility = View.GONE
-            visibility = View.VISIBLE
+            emptyStateView?.visible(false)
+            loadingStateView?.visible(false)
+            this.visible(true)
         }
     }
 
     private fun setState() {
         when (this.stateView) {
             RecyclerViewUiState.LOADING -> {
-                loadingStateView?.visibility = View.VISIBLE
-                visibility = View.GONE
-                emptyStateView?.visibility = View.GONE
+                loadingStateView?.visible(true)
+                this.visible(false)
+                emptyStateView?.visible(false)
             }
             RecyclerViewUiState.NORMAL -> {
-                loadingStateView?.visibility = View.GONE
-                visibility = View.VISIBLE
-                emptyStateView?.visibility = View.GONE
+                loadingStateView?.visible(false)
+                this.visible(true)
+                emptyStateView?.visible(false)
             }
             RecyclerViewUiState.EMPTY -> {
-                loadingStateView?.visibility = View.GONE
-                visibility = View.GONE
-                emptyStateView?.visibility = View.VISIBLE
+                loadingStateView?.visible(false)
+                this.visible(false)
+                emptyStateView?.visible(true)
             }
             else -> {
                 // should never enter here.
-                loadingStateView?.visibility = View.GONE
-                visibility = View.GONE
-                emptyStateView?.visibility = View.VISIBLE
+                loadingStateView?.visible(false)
+                this.visible(false)
+                emptyStateView?.visible(true)
             }
         }
     }
