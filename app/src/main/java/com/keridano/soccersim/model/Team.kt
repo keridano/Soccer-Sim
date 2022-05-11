@@ -34,3 +34,11 @@ fun Team.getCurrentGoalDifference(): Int {
 fun Team.getCurrentPoints(): Int {
     return (wonMatches * 3) + drawMatches
 }
+
+fun Team.clearAllResults() {
+    wonMatches = 0
+    lostMatches = 0
+    drawMatches = 0
+    scoredGoals = 0
+    concededGoals = 0
+}

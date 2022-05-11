@@ -12,6 +12,6 @@ data class Match(
     val homeTeam: Team,
     val awayTeam: Team,
     val matchDay: Int,
-    var homeTeamGoals: Int,
-    var awayTeamGoals: Int
+    var homeTeamGoals: Int = 0,
+    var awayTeamGoals: Int = 0
 )
