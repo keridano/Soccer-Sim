@@ -9,10 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.keridano.soccersim.R
 import com.keridano.soccersim.extension.TAG
 import com.keridano.soccersim.extension.reassign
-import com.keridano.soccersim.model.Group
-import com.keridano.soccersim.model.Match
-import com.keridano.soccersim.model.Team
-import com.keridano.soccersim.model.clearAllResults
+import com.keridano.soccersim.model.*
 import com.keridano.soccersim.model.enum.Bonus
 import com.keridano.soccersim.util.DispatcherProvider
 import com.keridano.soccersim.util.DispatcherProviders
@@ -66,6 +63,7 @@ class MainViewModel(
             startLoading()
             delay(2000) //simulating an API call
             createMatches()
+            simulateMatches()
             stopLoading()
         }
     }
@@ -97,7 +95,7 @@ class MainViewModel(
                     // distribute teams using a coin flip to choose the away and home teams
                     // This wont distribute evenly
                     // (it can happen for a team to be always the away team or vice versa)
-                    val coinFlip = listOf(true,false).shuffled().first()
+                    val coinFlip = listOf(true, false).shuffled().first()
                     if (coinFlip)
                         matches.add(
                             Match(
@@ -141,6 +139,52 @@ class MainViewModel(
 
                 matches.sortBy { it.matchDay }
                 _group.postValue(Group(teams, matches))
+            }
+        }
+    }
+
+    private fun simulateMatches() {
+        group.value?.teams?.let { teams ->
+            group.value?.matches?.let { matches ->
+                matches.forEach { match ->
+                    match.simulateMatch()
+                    teams.firstOrNull {
+                        it == match.homeTeam
+                    }?.let { home ->
+                        home.scoredGoals += match.homeTeamGoals
+                        home.concededGoals += match.awayTeamGoals
+
+                        when {
+                            match.homeTeamGoals > match.awayTeamGoals -> home.wonMatches += 1
+                            match.homeTeamGoals == match.awayTeamGoals -> home.drawMatches += 1
+                            else -> home.lostMatches += 1
+                        }
+                    }
+
+                    teams.firstOrNull {
+                        it == match.awayTeam
+                    }?.let { away ->
+                        away.scoredGoals += match.awayTeamGoals
+                        away.concededGoals += match.homeTeamGoals
+
+                        when {
+                            match.awayTeamGoals > match.homeTeamGoals -> away.wonMatches += 1
+                            match.awayTeamGoals == match.homeTeamGoals -> away.drawMatches += 1
+                            else -> away.lostMatches += 1
+                        }
+                    }
+                }
+
+                _group.postValue(
+                    Group(teams.sortedWith(
+                        compareByDescending<Team> { it.getCurrentPoints() }
+                            .thenByDescending { it.getCurrentGoalDifference() }
+                            .thenByDescending { it.scoredGoals }
+                            .thenByDescending { it.concededGoals }
+                    ).toMutableList(),
+                        matches
+                    )
+                )
             }
         }
     }

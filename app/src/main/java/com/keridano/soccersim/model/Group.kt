@@ -7,6 +7,6 @@ package com.keridano.soccersim.model
  * @param matches the matches to play between the teams
  */
 data class Group(
-    val teams: MutableList<Team>,
-    val matches: MutableList<Match>
+    var teams: MutableList<Team>,
+    var matches: MutableList<Match>
 )
