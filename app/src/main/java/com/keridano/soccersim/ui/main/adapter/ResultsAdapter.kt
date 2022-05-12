@@ -10,8 +10,13 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.keridano.soccersim.R
+import com.keridano.soccersim.model.Group
 import com.keridano.soccersim.model.Match
+import com.keridano.soccersim.model.Team
 
+/**
+ * Adapter used to represent the [Match]es results in a [RecyclerView]
+ */
 @SuppressLint("NotifyDataSetChanged")
 class ResultsAdapter : RecyclerView.Adapter<ResultsViewHolder>() {
 
@@ -40,6 +45,10 @@ class ResultsAdapter : RecyclerView.Adapter<ResultsViewHolder>() {
     private fun getItem(position: Int) = matches.elementAt(position)
 }
 
+/**
+ * ViewHolder of the [GroupStandingsAdapter].
+ * Binds a [Match] item at the layout
+ */
 @SuppressLint("SetTextI18n")
 class ResultsViewHolder(
     itemView: View,

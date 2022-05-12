@@ -5,9 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.keridano.soccersim.R
+import com.keridano.soccersim.model.Group
+import com.keridano.soccersim.model.Team
 
+/**
+ * Adapter used to represent the [Group] rankings header in a [RecyclerView].
+ * This will always be represented with a single item (the header).
+ * To be connected with the [GroupStandingsAdapter] using a [ConcatAdapter]
+ */
 class GroupStandingsHeaderAdapter : RecyclerView.Adapter<GroupStandingsHeaderViewHolder>() {
 
     override fun onCreateViewHolder(
@@ -25,9 +33,12 @@ class GroupStandingsHeaderAdapter : RecyclerView.Adapter<GroupStandingsHeaderVie
         holder.bind()
     }
 
-    override fun getItemCount() = 1
+    override fun getItemCount() = 1 // it is a single item
 }
 
+/**
+ * ViewHolder of the [GroupStandingsHeaderAdapter].
+ */
 class GroupStandingsHeaderViewHolder(
     headerView: View,
     private val context: Context

@@ -4,7 +4,7 @@ import com.keridano.soccersim.model.Match
 import com.keridano.soccersim.model.Team
 
 /**
- * A series of [Bonus] which are representative of a particular [Team]
+ * A series of [Bonus] which gives perks to a [Team]
  */
 enum class Bonus {
     /**

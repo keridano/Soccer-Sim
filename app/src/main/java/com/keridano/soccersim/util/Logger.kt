@@ -2,6 +2,9 @@ package com.keridano.soccersim.util
 
 import android.util.Log
 
+/**
+ * Utility to simplify logging without the need to always specify a TAG in every Log message
+ */
 @Suppress("unused")
 class Logger(private val tag: String) {
     fun d(msg: String) = Log.d(tag, msg)

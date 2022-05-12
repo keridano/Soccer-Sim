@@ -3,6 +3,9 @@ package com.keridano.soccersim.util
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 
+/**
+ * Utility interface to standardise the [CoroutineDispatcher]s to use in the app
+ */
 interface DispatcherProvider {
     val background: CoroutineDispatcher
     val main: CoroutineDispatcher

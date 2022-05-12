@@ -6,6 +6,11 @@ import com.keridano.soccersim.ui.main.MainFragment
 import com.keridano.soccersim.ui.main.MainViewModel
 import com.keridano.soccersim.ui.main.MainViewModelFactory
 
+/**
+ * Main and only activity of the App.
+ * It creates the [MainFragment] where the magic happens
+ * and provides the [MainViewModel] shared with the fragment
+ */
 class MainActivity : BaseActivity<MainViewModel>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

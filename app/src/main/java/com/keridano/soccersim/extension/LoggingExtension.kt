@@ -2,9 +2,15 @@ package com.keridano.soccersim.extension
 
 import java.lang.Integer.min
 
+/**
+ * Extension used to make sure that a correct TAG is used when logging a class
+ */
 val Any.TAG: String
     get() = this.javaClass.simpleName.let { it.substring(0, min(23, it.length)) }
 
+/**
+ * Extension useful to pretty print classes in logcat
+ */
 fun Any.prettyPrint(): String {
 
     var indentLevel = 0

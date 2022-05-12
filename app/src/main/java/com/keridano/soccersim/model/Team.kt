@@ -27,14 +27,23 @@ data class Team(
     var concededGoals: Int = 0
 )
 
+/**
+ * Get the difference between scored and conceded goals
+ */
 fun Team.getCurrentGoalDifference(): Int {
     return scoredGoals - concededGoals
 }
 
+/**
+ * Calculate the current points based on the matches results
+ */
 fun Team.getCurrentPoints(): Int {
     return (wonMatches * 3) + drawMatches
 }
 
+/**
+ * Clear every old results
+ */
 fun Team.clearAllResults() {
     wonMatches = 0
     lostMatches = 0

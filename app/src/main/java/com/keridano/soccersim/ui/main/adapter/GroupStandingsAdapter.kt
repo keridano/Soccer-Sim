@@ -10,10 +10,14 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.keridano.soccersim.R
+import com.keridano.soccersim.model.Group
 import com.keridano.soccersim.model.Team
 import com.keridano.soccersim.model.getCurrentGoalDifference
 import com.keridano.soccersim.model.getCurrentPoints
 
+/**
+ * Adapter used to represent the [Group] rankings in a [RecyclerView]
+ */
 @SuppressLint("NotifyDataSetChanged")
 class GroupStandingsAdapter : RecyclerView.Adapter<GroupStandingsViewHolder>() {
 
@@ -42,6 +46,10 @@ class GroupStandingsAdapter : RecyclerView.Adapter<GroupStandingsViewHolder>() {
     private fun getItem(position: Int) = teams.elementAt(position)
 }
 
+/**
+ * ViewHolder of the [GroupStandingsAdapter].
+ * Binds a [Team] item at the layout
+ */
 @SuppressLint("SetTextI18n")
 class GroupStandingsViewHolder(
     itemView: View,

@@ -19,6 +19,10 @@ import com.keridano.soccersim.ui.main.adapter.ResultsAdapter
 import com.keridano.soccersim.util.Logger
 import com.keridano.soccersim.util.RecyclerViewUiState
 
+/**
+ * Main and only [Fragment] of the app.
+ * It relies on the [MainViewModel] to start the simulation and receive back the model and Ui changes
+ */
 class MainFragment : Fragment() {
 
     companion object {
@@ -97,6 +101,9 @@ class MainFragment : Fragment() {
         _binding = null
     }
 
+    /**
+     * React to Ui state changes
+     */
     private fun onUiState(it: MainViewUiState) {
         logger.d("a change in the UiState occurred: ${it.prettyPrint()}")
         binding.groupResultsRw.stateView = when {
@@ -108,6 +115,9 @@ class MainFragment : Fragment() {
         binding.startButton.isEnabled = it.isStartSimulationButtonActive
     }
 
+    /**
+     * React to model changes
+     */
     private fun onGroupChanges(it: Group) {
         logger.d("a change in the Group occurred: ${it.prettyPrint()}")
         groupStandingsAdapter.setItems(it.teams)

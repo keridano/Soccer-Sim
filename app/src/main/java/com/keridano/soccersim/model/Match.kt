@@ -31,24 +31,27 @@ fun Match.simulateMatch() {
     var homeTeamPoints = homeTeam.strength + homeBonus
     var awayTeamPoints = awayTeam.strength
 
+    // add bonus perks
     if (homeTeam.bonuses.contains(Bonus.BEST_PLAYERS)) homeTeamPoints += 10
     if (homeTeam.bonuses.contains(Bonus.BEST_COACH)) homeTeamPoints += 5
     if (awayTeam.bonuses.contains(Bonus.BEST_PLAYERS)) awayTeamPoints += 10
     if (awayTeam.bonuses.contains(Bonus.BEST_COACH)) awayTeamPoints += 5
 
     homeTeamPoints += if (homeTeam.bonuses.contains(Bonus.LUCKY_TEAM))
-        (10..50).random()
+        (10..50).random() // The luckiest team has got better chances
     else
         (0..40).random()
 
     awayTeamPoints += if (awayTeam.bonuses.contains(Bonus.LUCKY_TEAM))
-        (10..50).random()
+        (10..50).random() // The luckiest team has got better chances
     else
         (0..40).random()
 
+    // calculate the scored goals based on the calculated points
     homeTeamGoals = transformPointsInGoals(homeTeamPoints)
     awayTeamGoals = transformPointsInGoals(awayTeamPoints)
 
+    // remove 1 conceded goal if the team has the best defense Bonus
     if (homeTeam.bonuses.contains(Bonus.BEST_DEFENSE) && homeTeamGoals > 0) homeTeamGoals -= 1
     if (awayTeam.bonuses.contains(Bonus.BEST_DEFENSE) && awayTeamGoals > 0) awayTeamGoals -= 1
 }
